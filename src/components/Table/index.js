@@ -1,6 +1,9 @@
 import React from "react";
 
 function Table(props) {
+  console.log(props);
+  let emps = Array.from(props.employees);
+  console.log(emps);
   return (
     <table className="table table-striped">
       <thead>
@@ -12,21 +15,17 @@ function Table(props) {
           <th scope="col">DOB</th>
         </tr>
       </thead>
+
       <tbody>
-        <tr>
-          <td>Some Image</td>
-          <td>Mark Twain</td>
-          <td>666-666-6666</td>
-          <td>12345@gmail.com</td>
-          <td>06/19/1997</td>
-        </tr>
-        <tr>
-          <td>Some Image</td>
-          <td>Mark Twain</td>
-          <td>666-666-6666</td>
-          <td>12345@gmail.com</td>
-          <td>06/19/1997</td>
-        </tr>
+        {emps.map((employee) => (
+          <tr>
+            <td>Some Image</td>
+            <td>hi</td>
+            <td>{employee.cell}</td>
+            <td>{employee.email}</td>
+            <td>{new Date().toISOString(employee.dob.date).split('T')[0]}</td>
+          </tr>
+        ))}
       </tbody>
     </table>
   );

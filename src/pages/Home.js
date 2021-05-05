@@ -9,7 +9,7 @@ import employeeAPI from "../utils/employeeAPI";
 
 class Home extends Component {
   state = {
-    result: {},
+    employees: {},
   };
 
   componentDidMount() {
@@ -19,7 +19,8 @@ class Home extends Component {
   SearchEmp = () => {
     employeeAPI
       .employeeSearch()
-      .then((res) => this.setState({ result: res.data.results }));
+      .then((res) => this.setState({ employees: res.data.results })) 
+      .catch((err) => this.setState({ error: err.message }));
   };
   render() {
     return (
@@ -36,8 +37,7 @@ class Home extends Component {
             </Row>
             <Row>
               <Col size="md-12">
-                <Table 
-                result={this.result}/>
+                <Table employees={this.state.employees} />
               </Col>
             </Row>
           </Container>
