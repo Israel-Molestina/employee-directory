@@ -5,9 +5,8 @@ function Table(props) {
 
 
 
-  console.log(props);
+
   let emps = Array.from(props.employees);
-  console.log(emps);
 
   return (
     <table className="table table-striped">

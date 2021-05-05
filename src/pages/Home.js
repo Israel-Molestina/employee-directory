@@ -10,6 +10,7 @@ import employeeAPI from "../utils/employeeAPI";
 class Home extends Component {
   state = {
     employees: {},
+    userEmployees: {},
   };
 
   componentDidMount() {
@@ -19,9 +20,23 @@ class Home extends Component {
   SearchEmp = () => {
     employeeAPI
       .employeeSearch()
-      .then((res) => this.setState({ employees: res.data.results })) 
+      .then((res) => this.setState({ employees: res.data.results }))
       .catch((err) => this.setState({ error: err.message }));
   };
+
+  handleInputChange = (event) => {
+    event.preventDefault();
+    this.setState({ userEmployees: event.target.value });
+    // console.log(this.state.userEmployees)
+
+    // let emps = Array.from(this.state.employees);
+
+    // let newEMp = this.state.employees.filter(emp => emp.contains(this.state.userEmployees))
+    // console.log(newEMp)
+
+    // this.setState({ employees: newEmp });
+  };
+
   render() {
     return (
       <div>
@@ -32,7 +47,7 @@ class Home extends Component {
           <Container>
             <Row>
               <Col size="md-3">
-                <SearchFrom />
+                <SearchFrom handleInputChange={this.handleInputChange} />
               </Col>
             </Row>
             <Row>
