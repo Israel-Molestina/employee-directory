@@ -11,6 +11,7 @@ class Home extends Component {
   state = {
     employees: {},
     userEmployees: {},
+    filterEmployees: {},
   };
 
   componentDidMount() {
@@ -20,19 +21,28 @@ class Home extends Component {
   SearchEmp = () => {
     employeeAPI
       .employeeSearch()
-      .then((res) => this.setState({ employees: res.data.results }))
+      .then((res) =>
+        this.setState({
+          employees: res.data.results,
+          filterEmployees: res.data.results,
+        })
+      )
       .catch((err) => this.setState({ error: err.message }));
   };
 
   handleInputChange = (event) => {
     event.preventDefault();
-    this.setState({ userEmployees: event.target.value });
+    this.setState({
+      userEmployees: event.target.value,
+    });
+    // console.log(this.state.filterEmployees);
     // console.log(this.state.userEmployees)
 
-    // let emps = Array.from(this.state.employees);
+    // let emps = Array.from(this.state.filter);
+    // console.log(this.state.employees);
 
-    // let newEMp = this.state.employees.filter(emp => emp.contains(this.state.userEmployees))
-    // console.log(newEMp)
+    let newEMp = this.state.filterEmployees.filter((emp) => emp.name.first.includes(this.state.userEmployees));
+    console.log(newEMp);
 
     // this.setState({ employees: newEmp });
   };

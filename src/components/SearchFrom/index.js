@@ -2,7 +2,6 @@ import React from "react";
 import "./style.css";
 
 function SearchFrom(props) {
-  console.log(props)
   return (
     <form className="search">
       <div className="form-group">
