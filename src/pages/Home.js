@@ -41,10 +41,11 @@ class Home extends Component {
     // let emps = Array.from(this.state.filter);
     // console.log(this.state.employees);
 
-    let newEMp = this.state.filterEmployees.filter((emp) => emp.name.first.includes(this.state.userEmployees));
-    console.log(newEMp);
+    let newEmp = this.state.filterEmployees.filter((emp) => emp.name.first.includes(this.state.userEmployees));
+    console.log(newEmp);
 
-    // this.setState({ employees: newEmp });
+    this.setState({ employees: newEmp });
+    console.log(this.state.employees)
   };
 
   render() {
