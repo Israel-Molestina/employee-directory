@@ -8,7 +8,8 @@ function SearchFrom(props) {
         <label htmlFor="search">Search</label>
         <input
           onChange={props.handleInputChange}
-          name="search"
+          value={props.input}
+          name="userEmployees"
           type="text"
           className="form-control"
           placeholder="Type here"
