@@ -36,19 +36,13 @@ class Home extends Component {
     this.setState(
       {
         [event.target.name]: event.target.value,
-        // userEmployees: event.target.value,
       },
-      this.filter(event.target.value)
+      () => this.filter(event.target.value)
     );
     console.log(this.state.userEmployees);
-    // console.log(this.state.filterEmployees);
-    // console.log(this.state.userEmployees)
-
-    // let emps = Array.from(this.state.filter);
-    // console.log(this.state.employees);
   };
 
-  filter = (val) => {
+  filter = () => {
     if (!this.state.userEmployees) {
       this.setState({ filterEmployees: this.state.employees });
     } else {
@@ -63,26 +57,17 @@ class Home extends Component {
   };
 
   handleBtnClick = () => {
-
-    if(this.state.isAlph) {
+    if (this.state.isAlph) {
       // google a sorting function to do over filterEmployees array
       // use .sort() on filterEmployees
       // if else statemnt within .sort() a.name.sort > b.name.sort if true return 1 if false return -1
-    }
-    else {
+    } else {
       // a.name.first < b.name.first
       // fun the oppposite of the above sort funcntion
     }
 
-
-
-
-
     //once i sort it change state to true
     this.setState({ isAlph: true });
-
-
-
   };
 
   render() {
