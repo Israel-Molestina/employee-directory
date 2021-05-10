@@ -48,7 +48,7 @@ class Home extends Component {
       this.setState({ filterEmployees: this.state.employees });
     } else {
       let newEmp = this.state.employees.filter((emp) =>
-        emp.name.first.includes(this.state.userEmployees)
+        emp.name.first.toLowerCase().includes(this.state.userEmployees.toLowerCase())
       );
       console.log(newEmp);
 
