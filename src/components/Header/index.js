@@ -5,7 +5,7 @@ function Header() {
   return (
     <header>
       <img
-        src={require("../../images/heading.png").default}
+        src={require("../../images/header.png").default}
         alt="header"
         className="img-fluid borderW border-danger"
       />

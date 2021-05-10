@@ -31,6 +31,7 @@ class Home extends Component {
       .catch((err) => this.setState({ error: err.message }));
   };
 
+  // searches through list of employees depending on user input
   handleInputChange = (event) => {
     // event.preventDefault();
     this.setState(
@@ -56,18 +57,25 @@ class Home extends Component {
     }
   };
 
-  handleBtnClick = () => {
+  // sorts employee first names in alphabetical order
+  handleClick = () => {
     if (this.state.isAlph) {
-      // google a sorting function to do over filterEmployees array
-      // use .sort() on filterEmployees
-      // if else statemnt within .sort() a.name.sort > b.name.sort if true return 1 if false return -1
-    } else {
-      // a.name.first < b.name.first
-      // fun the oppposite of the above sort funcntion
-    }
+      console.log("true");
+      this.state.filterEmployees.sort((a, b) =>
+        a.name.first.localeCompare(b.name.first)
+      );
+      console.log(this.state.filterEmployees);
 
-    //once i sort it change state to true
-    this.setState({ isAlph: true });
+      this.setState({ isAlph: false });
+    } else {
+      console.log("false");
+      this.state.filterEmployees.sort((a, b) =>
+        b.name.first.localeCompare(a.name.first)
+      );
+      console.log(this.state.filterEmployees);
+
+      this.setState({ isAlph: true });
+    }
   };
 
   render() {
@@ -88,7 +96,10 @@ class Home extends Component {
             </Row>
             <Row>
               <Col size="md-12">
-                <Table employees={this.state.filterEmployees} />
+                <Table
+                  employees={this.state.filterEmployees}
+                  handleClick={this.handleClick}
+                />
               </Col>
             </Row>
           </Container>
